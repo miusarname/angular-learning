@@ -1,0 +1,11 @@
+@if (isLogIn) {
+<h1 class="GreetingUser">Welcome,{{ usarname }}</h1>
+<img
+(click)="greet()"
+src="https://github.com/miusarname.png"
+alt="">
+}@else {
+<button (click)="isLogIn = true">Log In</button>
+}
+
+<app-software-list username="{{usarname}}" isLogIn="{{isLogIn}}"/>
