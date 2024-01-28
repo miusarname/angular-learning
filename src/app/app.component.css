@@ -2,3 +2,7 @@ h1{
     color: aqua;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.container{
+  max-width: 50%;
+}

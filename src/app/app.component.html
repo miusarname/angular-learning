@@ -1,2 +1,13 @@
 <app-user-logib/>
+<div class="container">
+  @defer (on viewport){
+    <app-comments/>
+  }@placeholder {
+    <p>...........</p>
+  }@loading {
+    <p>
+      Cargando....
+    </p>
+  }
+</div>
 <!-- <router-outlet></router-outlet> -->
