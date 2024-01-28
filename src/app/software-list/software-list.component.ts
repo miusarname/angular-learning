@@ -1,24 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-software-list',
   standalone: true,
   imports: [],
   template: `
-    @if (username && isLogIn) {
+    @if (username && logged()) {
     <h1 class="GreetingUser">Esta es un lista generada por:{{ username }}</h1>
     }
     <ul>
       @for (game of games; track game.id) {
-      <li>{{ game.nombre }}</li>
+      <li (click)="fav(game.nombre)">{{ game.nombre }}</li>
       }
     </ul>
   `,
   styleUrl: './software-list.component.css',
 })
 export class SoftwareListComponent {
+
   @Input() username = '';
+
   @Input() isLogIn= '';
+
+  @Output() addFavoriteEvent = new EventEmitter<string>();
+
   games = [
     { id: 1, nombre: 'The Witcher 3: Wild Hunt' },
     { id: 2, nombre: 'The Legend of Zelda: Breath of the Wild' },
@@ -41,4 +46,17 @@ export class SoftwareListComponent {
     { id: 19, nombre: 'Call of Duty: Warzone' },
     { id: 20, nombre: 'Valorant' },
   ];
+
+  logged = ()=>{
+    if (this.isLogIn == "true") {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  fav(gameName:string){
+    // alert(`A ${this.logged()? this.username :  'usuario'}, le gusta ${gameName}`)
+    this.addFavoriteEvent.emit(gameName);
+  }
 }

@@ -11,8 +11,13 @@ import { SoftwareListComponent } from '../software-list/software-list.component'
 export class UserLogibComponent {
   usarname = "miusarname";
   isLogIn = false;
+  favGame= '';
 
   greet(){
     alert("Hola!!")
+  }
+
+  getFavorite(favorite:string){
+    this.favGame = favorite;
   }
 }

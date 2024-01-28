@@ -8,4 +8,8 @@ alt="">
 <button (click)="isLogIn = true">Log In</button>
 }
 
-<app-software-list username="{{usarname}}" isLogIn="{{isLogIn}}"/>
+<app-software-list (addFavoriteEvent)="getFavorite($event)" username="{{usarname}}" isLogIn="{{isLogIn}}"/>
+
+@if (favGame != '') {
+  <h2>Tu juego favorito es {{favGame}}</h2>
+}
